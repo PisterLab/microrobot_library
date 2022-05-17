@@ -93,7 +93,7 @@ combined_soi.output("SOI coverage", "SOI covers %.1f %% of total area" % [combin
 
 # Do something fancy: detect whether coverage satisfies some constraint
 combined_substrate_coverage = combined_substrate_area / bounds_area # note this assumes a rectangular bounding box because it uses bounds_area!
-combined_substrate_coverage_minimum = 0.85 # define a constant
+combined_substrate_coverage_minimum = 0.7 # define a constant
 if combined_substrate_coverage &lt; combined_substrate_coverage_minimum then
     combined_substrate.output("substrate coverage", "substrate covers %.1f %% of total area; should cover at least %.1f %%" % [combined_substrate_coverage*100, combined_substrate_coverage_minimum*100])
 else
