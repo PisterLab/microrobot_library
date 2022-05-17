@@ -113,7 +113,7 @@ combined_metal.space(1.98.um, projection, angle_limit(30.degree)).output("metal 
 combined_metal.width(1.98.um, projection, angle_limit(30.degree)).output("metal width violation", "feature thinner than 2um")
 
 # Check that features on the "metal" layer are entirely contained within features on the "combined_soi" layer
-combined_metal.outside(combined_soi).output("metal inside violation", "metal not on SOI")
+(combined_metal-combined_soi).output("metal inside violation", "metal not on SOI") # the "outside" command does not cover every desired case, so do this instead
 
 # Check that features on the "metal" layer are inset at least 5um from edges of features on the "combined_soi" layer
 combined_soi.enclosing(combined_metal, 4.95.um).output("metal enclosing violation", "metal not surrounded by at least 5um SOI")
