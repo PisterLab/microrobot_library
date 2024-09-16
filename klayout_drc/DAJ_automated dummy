@@ -1,0 +1,29 @@
+#This DRC makes an output layer (102) ready for exposure without needing to manually draw dummy SOI. This saves time, reduces mistakes and greatly lowers the amount of exposed area.
+#Cut is the maximum space between blocks of SOI, default is 15um but can be changed. 
+##If you want a space between SOI greater than this amount change the variable cut or manually add dummy SOI with etch holes.
+
+cut=15.um
+# input layers from current open layout file
+trench = input(0, 0)
+nottrench = input(1, 0)
+retrench = input(2, 0) 
+soi = input(3, 0)
+soihole = input(4, 0)
+resoi = input(5, 0)
+metal = input(6, 0)
+metalhole = input(7, 0)
+remetal = input(8, 0)
+dummy = input(9, 0)
+notdummy = input(10, 0)
+
+# do layer math
+temp = soi.sized(+cut)+resoi.sized(+cut)
+soi = (temp - soi+soihole-resoi)
+metal=(metal-metalhole)
+
+
+metal.output(101)
+soi.output(102)
+remetal.output(103)
+
+
